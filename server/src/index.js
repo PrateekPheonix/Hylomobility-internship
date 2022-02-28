@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 
 require('./db/mongoose')
 
@@ -8,7 +9,9 @@ const app = express()
 
 const port = process.env.PORT
 
-
+app.use(cors({
+    " Access-Control-Allow-Origin": "*"
+}))
 app.use(express.json())
 app.use(userRouter)
 
