@@ -5,6 +5,7 @@ const cors = require('cors')
 require('./db/mongoose')
 
 const userRouter = require('./routers/userAdmin')
+const vehicleRouter = require('./routers/vehicleAdmin')
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(userRouter)
+app.use(vehicleRouter)
 
 app.listen(port, () => {
     console.log("SERVER IS UP ON PORT", port)
