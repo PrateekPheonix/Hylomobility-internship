@@ -43,7 +43,7 @@ select {
 
 input[type="submit"] {
   width: 100%;
-  background-color: #ffa4b7;
+  background-color: #f0718d;
   color: white;
   padding: 14px 20px;
   margin: 26px 0;
@@ -54,7 +54,7 @@ input[type="submit"] {
   font-weight: 500;
 }
 input[type="submit"]:hover {
-  background-color: #fd89a0;
+  background-color: #fd5173;
 }
 
 input[type="radio"] {
