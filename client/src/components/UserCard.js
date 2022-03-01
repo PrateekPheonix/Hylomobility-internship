@@ -7,7 +7,6 @@ import axios from 'axios';
 
 
 const UserCard = (props) => {
-    console.log(window.location.pathname)
 
     const [isEditable, setIsEditable] = useState(false);
     // const [name, setName] = useState("");

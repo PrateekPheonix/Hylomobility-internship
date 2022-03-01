@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import '../css/global.css'
@@ -28,11 +28,14 @@ const VehicleAdminForm = () => {
         setColor("")
     }
 
-    axios.get('http://localhost:5000/vehicleadmin').then((result) => {
-        setVehicleData(result.data)
-    }).catch((err) => {
-        console.log(err)
-    });
+    useEffect(() => {
+        axios.get('http://localhost:5000/vehicleadmin').then((result) => {
+            setVehicleData(result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, []);
+
 
     return (
         <div>

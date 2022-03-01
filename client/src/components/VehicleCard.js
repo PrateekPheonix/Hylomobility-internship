@@ -6,7 +6,6 @@ import { FaEdit } from 'react-icons/fa';
 import { GrFormClose } from 'react-icons/gr';
 
 const VehicleCard = (props) => {
-    console.log(window.location.pathname)
 
     const [isEditable, setIsEditable] = useState(false);
 

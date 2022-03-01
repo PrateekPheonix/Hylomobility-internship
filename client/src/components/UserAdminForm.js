@@ -24,11 +24,15 @@ const UserAdminForm = () => {
         setName("")
         setEmail("")
     }
-    axios.get('http://localhost:5000/useradmin').then((result) => {
-        setUserData(result.data)
-    }).catch((err) => {
-        console.log(err)
-    });
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/useradmin').then((result) => {
+            setUserData(result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, []);
+
 
 
     return (

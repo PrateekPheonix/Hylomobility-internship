@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import '../css/superadmin.css'
@@ -9,19 +9,23 @@ const SuperAdminForm = () => {
     const [userData, setUserData] = useState([]);
     const [vehicleData, setVehicleData] = useState([]);
 
-    axios.get('http://localhost:5000/useradmin').then((result) => {
-        setUserData(result.data)
-    }).catch((err) => {
-        console.log(err)
-    });
+    useEffect(() => {
+        axios.get('http://localhost:5000/useradmin').then((result) => {
+            setUserData(result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
 
 
-    axios.get('http://localhost:5000/vehicleadmin').then((result) => {
-        setVehicleData(result.data)
-    }).catch((err) => {
-        console.log(err)
-    });
+        axios.get('http://localhost:5000/vehicleadmin').then((result) => {
+            setVehicleData(result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, []);
 
+
+    console.log("hello")
     return (
         <div>
             <div className="form-container">
@@ -42,26 +46,20 @@ const SuperAdminForm = () => {
             <div className='list-container'>
                 <div className='list-column'>
                     <h2>User Admins</h2>
-                    {userData.map((user) => {
-                        if (user.role === 'userAdmin') {
-                            return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
-                        }
+                    {userData.filter(user => user.role === 'userAdmin').map((user) => {
+                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
                 <div className='list-column'>
                     <h2>Vehicle Admins</h2>
-                    {userData.map((user) => {
-                        if (user.role === 'vehicleAdmin') {
-                            return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
-                        }
+                    {userData.filter(user => user.role === 'vehicleAdmin').map((user) => {
+                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
                 <div className='list-column'>
                     <h2>Users</h2>
-                    {userData.map((user) => {
-                        if (user.role === 'user') {
-                            return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
-                        }
+                    {userData.filter(user => user.role === 'user').map((user) => {
+                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
                 <div className='list-column'>
