@@ -25,7 +25,7 @@ router.get('/vehicleadmin', async (req, res) => {
         });
 })
 
-router.patch('/vehicleadmin', async (req, res) => {
+router.put('/vehicleadmin', async (req, res) => {
 
     await Vehicle.findOneAndUpdate({ _id: req.body.id }, req.body, {
         new: true,

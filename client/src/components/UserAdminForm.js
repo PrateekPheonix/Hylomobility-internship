@@ -17,6 +17,8 @@ const UserAdminForm = () => {
     }
     const formSubmit = async (e) => {
         e.preventDefault()
+        window.location.reload();
+        alert("New User Created Successfully!!")
         await axios.post('http://localhost:5000/useradmin', {
             name,
             email,
