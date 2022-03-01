@@ -24,10 +24,11 @@ router.get('/useradmin', async (req, res) => {
         });
 })
 
-router.patch('/useradmin', async (req, res) => {
+router.put('/useradmin', async (req, res) => {
 
     await User.findOneAndUpdate({ _id: req.body.id }, req.body, {
-        new: true
+        new: true,
+        runValidators: true,
     })
         .then((result) => {
             res.send(result)

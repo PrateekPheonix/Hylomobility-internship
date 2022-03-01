@@ -13,6 +13,8 @@ const SuperAdminForm = () => {
                     <input name='name' type="text" required />
                     <label htmlFor="email">Email</label>
                     <input name='email' type="email" required />
+                    <label htmlFor="password">Password</label>
+                    <input name='password' type="password" required />
                     <input type="radio" name="roles" id="user-admin" value="userAdmin" />
                     <label htmlFor="user-admin">User Admin</label>
                     <input type="radio" name="roles" id="vehicle-admin" value="vehicleAdmin" />
