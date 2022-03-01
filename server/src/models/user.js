@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
         trim: true,
     },
     role: {
@@ -33,7 +32,6 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type: String,
-        required: true,
     }
 })
 
