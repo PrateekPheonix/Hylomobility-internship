@@ -6,7 +6,7 @@ import { GrFormClose } from 'react-icons/gr';
 import axios from 'axios';
 
 
-const UserCard = () => {
+const UserCard = (props) => {
     console.log(window.location.pathname)
 
     const [isEditable, setIsEditable] = useState(false);
@@ -36,12 +36,12 @@ const UserCard = () => {
 
     return (
         <div className='show-panel-container'>
-            <div className='card'>
+            <div className='card card-width'>
                 <div className="card-content">
-                    <p><span className='card-head'>Name:</span> Prateek Niket</p>
-                    <p><span className='card-head'>Email:</span> PrateekNiket@gmail.com</p>
-                    <p><span className='card-head'>Role:</span> Super Admin</p>
-                    <p><span className='card-head'>ID:</span> 621dae359a65f3d5e54fe5cb</p>
+                    <p><span className='card-head'>Name:</span> {props.name}</p>
+                    <p><span className='card-head'>Email:</span> {props.email}</p>
+                    <p><span className='card-head'>Role:</span> {props.role}</p>
+                    <p><span className='card-head'>ID:</span> {props.id}</p>
                 </div>
                 {
                     window.location.pathname !== '/superadmin'
@@ -55,7 +55,7 @@ const UserCard = () => {
             {isEditable === true ?
                 <div className='edit-container'>
                     <GrFormClose className='close' onClick={showEditPanel} />
-                    <form onSubmit={formSubmit} method='POST' action="">
+                    <form method='POST' action="">
                         <label htmlFor="name">New Name</label>
                         <input name='name' type="text" />
                         <label htmlFor="email">New Email</label>

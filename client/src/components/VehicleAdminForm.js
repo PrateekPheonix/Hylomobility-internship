@@ -9,6 +9,8 @@ const VehicleAdminForm = () => {
     const [year, setYear] = useState();
     const [color, setColor] = useState("");
 
+    const [vehicleData, setVehicleData] = useState([]);
+
     const config = {
         headers: {
             "Content-type": "application/json"
@@ -22,9 +24,15 @@ const VehicleAdminForm = () => {
             color,
         }, config)
         setName("")
-        setYear()
+        setYear("")
         setColor("")
     }
+
+    axios.get('http://localhost:5000/vehicleadmin').then((result) => {
+        setVehicleData(result.data)
+    }).catch((err) => {
+        console.log(err)
+    });
 
     return (
         <div>
@@ -42,15 +50,9 @@ const VehicleAdminForm = () => {
             <div className='list-container'>
                 <div className='list-column'>
                     <h2>Vehicles</h2>
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
-                    <VehicleCard />
+                    {vehicleData.map((vehicle) => {
+                        return < VehicleCard id={vehicle._id} name={vehicle.name} year={vehicle.manufacturedYear} color={vehicle.color} />
+                    })}
                 </div>
             </div>
         </div>

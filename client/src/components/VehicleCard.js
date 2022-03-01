@@ -5,7 +5,7 @@ import { MdDelete } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import { GrFormClose } from 'react-icons/gr';
 
-const VehicleCard = () => {
+const VehicleCard = (props) => {
     console.log(window.location.pathname)
 
     const [isEditable, setIsEditable] = useState(false);
@@ -19,10 +19,10 @@ const VehicleCard = () => {
         <div className='show-panel-container'>
             <div className='card'>
                 <div className="card-content">
-                    <p><span className='card-head'>Name:</span> Prateek Niket</p>
-                    <p><span className='card-head'>Manufacturing Year:</span> 2008</p>
-                    <p><span className='card-head'>Color:</span> Red</p>
-                    <p><span className='card-head'>ID:</span> xcouq87921yeh1e90</p>
+                    <p><span className='card-head'>Name:</span> {props.name}</p>
+                    <p><span className='card-head'>Manufacturing Year:</span> {props.year}</p>
+                    <p><span className='card-head'>Color:</span> {props.color}</p>
+                    <p><span className='card-head'>ID:</span> {props.id}</p>
                 </div>
                 {
                     window.location.pathname !== '/superadmin'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import '../css/global.css'
@@ -7,6 +7,8 @@ import UserCard from './UserCard'
 const UserAdminForm = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+
+    const [userData, setUserData] = useState([]);
 
     const config = {
         headers: {
@@ -22,6 +24,12 @@ const UserAdminForm = () => {
         setName("")
         setEmail("")
     }
+    axios.get('http://localhost:5000/useradmin').then((result) => {
+        setUserData(result.data)
+    }).catch((err) => {
+        console.log(err)
+    });
+
 
     return (
         <div>
@@ -37,11 +45,9 @@ const UserAdminForm = () => {
             <div className='list-container'>
                 <div className='list-column'>
                     <h2>Users</h2>
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
+                    {userData.map((user) => {
+                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
+                    })}
                 </div>
             </div>
         </div>
