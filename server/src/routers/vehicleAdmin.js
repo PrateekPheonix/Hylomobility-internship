@@ -1,14 +1,15 @@
 const express = require('express')
+const auth = require('../middleware/auth')
 const Vehicle = require('../models/vehicle')
 
 const router = new express.Router()
 
 
 router.post('/vehicleadmin', async (req, res) => {
-    const user = new Vehicle(req.body)
+    const vehicle = new Vehicle(req.body)
 
     try {
-        await user.save()
+        await vehicle.save()
         res.send(req.body)
     } catch (error) {
         res.status(400).send(error)

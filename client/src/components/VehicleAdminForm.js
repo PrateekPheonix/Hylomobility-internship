@@ -18,7 +18,6 @@ const VehicleAdminForm = () => {
     }
     const formSubmit = async (e) => {
         e.preventDefault()
-        window.location.reload();
         await axios.post('http://localhost:5000/vehicleadmin', {
             name,
             manufacturedYear: year,
@@ -28,6 +27,7 @@ const VehicleAdminForm = () => {
         setYear("")
         setColor("")
         alert("New Vehicle Created Successfully!!")
+        window.location.reload();
     }
 
     useEffect(() => {

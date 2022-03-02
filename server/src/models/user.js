@@ -32,7 +32,9 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type: String,
+        required: true
     }
+
 })
 
 // Hash the plain text password before saving
@@ -50,6 +52,34 @@ userSchema.methods.matchPassword = async (enteredPassword) => {
     const user = this
 
     return await bcrypt.compare(enteredPassword, user.password)
+}
+
+// JWT
+userSchema.methods.generateAuthToken = async function () {
+    const user = this
+
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET)
+
+    user.token = token
+    await user.save()
+
+    return token
+}
+
+// finding by credentials
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email })
+
+    if (!user) {
+        throw new Error('Unable to login')
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        throw new Error('Unable to login')
+    }
+    return user
 }
 
 const User = mongoose.model('User', userSchema)

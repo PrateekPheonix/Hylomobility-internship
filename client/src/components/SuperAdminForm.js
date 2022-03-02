@@ -45,7 +45,7 @@ const SuperAdminForm = () => {
     }
     const formSubmit = async (e) => {
         e.preventDefault()
-        await axios.post('http://localhost:5000/useradmin', {
+        await axios.post('http://localhost:5000/superadmin', {
             name,
             email,
             password,
@@ -56,12 +56,10 @@ const SuperAdminForm = () => {
         setEmail('')
         setPassword('')
         setRole('')
-        window.location.reload();
         alert("New Admin Created Successfully!!")
+        window.location.reload();
     }
 
-
-    console.log("hello")
     return (
         <div>
             <div className="form-container">
