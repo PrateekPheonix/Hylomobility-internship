@@ -21,7 +21,7 @@ Form styles
   background-color: #fff;
   border-radius: 20px;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   -ms-transform: translateX(-50%) translateY(-60%);
   -webkit-transform: translate(-50%, -60%);
@@ -67,7 +67,7 @@ form {
 
 .list-container {
   position: relative;
-  top: 40rem;
+  top: 38rem;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -75,4 +75,12 @@ form {
   height: fit-content;
   margin: auto;
   margin-bottom: 100px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 40px;
+  color: #fd5173;
+  margin-bottom: 40px;
+  position: relative;
 }

@@ -1,5 +1,4 @@
 const express = require('express')
-const auth = require('../middleware/auth')
 const Vehicle = require('../models/vehicle')
 
 const router = new express.Router()

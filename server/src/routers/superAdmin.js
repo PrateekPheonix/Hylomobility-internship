@@ -8,9 +8,8 @@ router.post('/superadmin', async (req, res) => {
     const user = new User(req.body)
 
     try {
-        const token = await user.generateAuthToken()
         await user.save()
-        res.status(200).send({ user, token })
+        res.status(200).send(user)
     } catch (error) {
         res.status(400).send(error)
     }

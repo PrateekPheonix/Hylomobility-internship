@@ -47,6 +47,7 @@ const UserCard = (props) => {
         alert("User Data Deleted Successfully!!")
     }
 
+    let data = localStorage.getItem("role")
 
     return (
         <div className='show-panel-container'>
@@ -58,7 +59,7 @@ const UserCard = (props) => {
                     <p><span className='card-head'>ID:</span> {props.id}</p>
                 </div>
                 {
-                    window.location.pathname !== '/superadmin'
+                    data !== 'superAdmin'
                         ? <div className='card-buttons'>
                             <button className='update' onClick={showEditPanel}><FaEdit /></button>
                             <button className='delete' onClick={deleteUser}><MdDelete /></button>

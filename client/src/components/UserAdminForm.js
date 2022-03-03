@@ -10,6 +10,8 @@ const UserAdminForm = () => {
 
     const [userData, setUserData] = useState([]);
 
+    let createdBy = localStorage.getItem("ID")
+
     const config = {
         headers: {
             "Content-type": "application/json"
@@ -17,14 +19,15 @@ const UserAdminForm = () => {
     }
     const formSubmit = async (e) => {
         e.preventDefault()
-        window.location.reload();
-        alert("New User Created Successfully!!")
         await axios.post('http://localhost:5000/useradmin', {
+            createdBy,
             name,
             email,
         }, config)
         setName("")
         setEmail("")
+        alert("New User Created Successfully!!")
+        window.location.reload();
     }
 
     useEffect(() => {
@@ -39,6 +42,7 @@ const UserAdminForm = () => {
 
     return (
         <div>
+            <h1 className='title'>User Admin Dashboard</h1>
             <div className="form-container">
                 <form onSubmit={formSubmit} method='POST' action="">
                     <label htmlFor="name">Name</label>
@@ -51,8 +55,8 @@ const UserAdminForm = () => {
             <div className='list-container'>
                 <div className='list-column'>
                     <h2>Users</h2>
-                    {userData.map((user) => {
-                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
+                    {userData.filter(user => user.role === 'user' && user.createdBy === createdBy).map((user) => {
+                        return < UserCard key={user._id} id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
             </div>

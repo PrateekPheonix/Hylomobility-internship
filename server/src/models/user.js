@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const jwt = require('jsonwebtoken')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 
@@ -30,9 +29,8 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'vehicleAdmin', 'userAdmin', 'superAdmin'],
         default: 'user',
     },
-    token: {
-        type: String,
-        required: true
+    createdBy: {
+        type: String
     }
 
 })
@@ -52,18 +50,6 @@ userSchema.methods.matchPassword = async (enteredPassword) => {
     const user = this
 
     return await bcrypt.compare(enteredPassword, user.password)
-}
-
-// JWT
-userSchema.methods.generateAuthToken = async function () {
-    const user = this
-
-    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET)
-
-    user.token = token
-    await user.save()
-
-    return token
 }
 
 // finding by credentials

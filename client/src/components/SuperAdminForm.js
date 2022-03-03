@@ -62,6 +62,7 @@ const SuperAdminForm = () => {
 
     return (
         <div>
+            <h1 className='title'>Super Admin Dashboard</h1>
             <div className="form-container">
                 <form onSubmit={formSubmit} method='POST' action="">
                     <label htmlFor="name">Name</label>
@@ -81,25 +82,25 @@ const SuperAdminForm = () => {
                 <div className='list-column'>
                     <h2>User Admins</h2>
                     {userData.filter(user => user.role === 'userAdmin').map((user) => {
-                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
+                        return < UserCard key={user._id} id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
                 <div className='list-column'>
                     <h2>Vehicle Admins</h2>
                     {userData.filter(user => user.role === 'vehicleAdmin').map((user) => {
-                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
+                        return < UserCard key={user._id} id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
                 <div className='list-column'>
                     <h2>Users</h2>
                     {userData.filter(user => user.role === 'user').map((user) => {
-                        return < UserCard id={user._id} name={user.name} email={user.email} role={user.role} />
+                        return < UserCard key={user._id} id={user._id} name={user.name} email={user.email} role={user.role} />
                     })}
                 </div>
                 <div className='list-column'>
                     <h2>Vehicles</h2>
                     {vehicleData.map((vehicle) => {
-                        return < VehicleCard id={vehicle._id} name={vehicle.name} year={vehicle.manufacturedYear} color={vehicle.color} />
+                        return < VehicleCard key={vehicle._id} id={vehicle._id} name={vehicle.name} year={vehicle.manufacturedYear} color={vehicle.color} />
                     })}
                 </div>
             </div>

@@ -50,6 +50,8 @@ const VehicleCard = (props) => {
         alert("Vehicle Data Deleted Successfully!!")
     }
 
+    let data = localStorage.getItem("role")
+
     return (
         <div className='show-panel-container'>
             <div className='card'>
@@ -60,7 +62,7 @@ const VehicleCard = (props) => {
                     <p><span className='card-head'>ID:</span> {props.id}</p>
                 </div>
                 {
-                    window.location.pathname !== '/superadmin'
+                    data !== 'superAdmin'
                         ? <div className='card-buttons'>
                             <button className='update' onClick={showEditPanel}><FaEdit /></button>
                             <button className='delete' onClick={deleteVehicle}><MdDelete /></button>

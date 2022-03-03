@@ -11,6 +11,8 @@ const VehicleAdminForm = () => {
 
     const [vehicleData, setVehicleData] = useState([]);
 
+    let createdBy = localStorage.getItem("ID")
+
     const config = {
         headers: {
             "Content-type": "application/json"
@@ -19,6 +21,7 @@ const VehicleAdminForm = () => {
     const formSubmit = async (e) => {
         e.preventDefault()
         await axios.post('http://localhost:5000/vehicleadmin', {
+            createdBy,
             name,
             manufacturedYear: year,
             color,
@@ -41,6 +44,7 @@ const VehicleAdminForm = () => {
 
     return (
         <div>
+            <h1 className='title'>Vehicle Admin Dashboard</h1>
             <div className="form-container">
                 <form onSubmit={formSubmit} method='POST' action="">
                     <label htmlFor="name">Name</label>
@@ -55,8 +59,8 @@ const VehicleAdminForm = () => {
             <div className='list-container'>
                 <div className='list-column'>
                     <h2>Vehicles</h2>
-                    {vehicleData.map((vehicle) => {
-                        return < VehicleCard id={vehicle._id} name={vehicle.name} year={vehicle.manufacturedYear} color={vehicle.color} />
+                    {vehicleData.filter(vehicle => vehicle.createdBy === createdBy).map((vehicle) => {
+                        return < VehicleCard key={vehicle._id} id={vehicle._id} name={vehicle.name} year={vehicle.manufacturedYear} color={vehicle.color} />
                     })}
                 </div>
             </div>

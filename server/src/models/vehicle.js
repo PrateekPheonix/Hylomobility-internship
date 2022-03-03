@@ -15,6 +15,9 @@ const vehicleSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    createdBy: {
+        type: String
     }
 })
 
