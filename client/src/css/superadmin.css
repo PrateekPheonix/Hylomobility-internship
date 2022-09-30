@@ -1,5 +1,7 @@
 label {
-  margin-right: 30px;
+  margin-right: 31px;
+  margin-left: 1px;
+  margin-top: 1px;
 }
 
 .list-column {
@@ -9,5 +11,5 @@ label {
 
 h2 {
   text-align: center;
-  color: #fa395f;
+  color: #fa385f;
 }
