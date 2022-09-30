@@ -4,7 +4,7 @@
   align-items: center;
   margin: 20px;
   margin-right: 0px;
-  border-radius: 10px;
+  border-radius: 12px;
   width: 100%;
   padding: 10px;
   background-color: #fff;
@@ -32,14 +32,13 @@ p {
 
 button {
   margin: 20px 5px;
-  padding: 8px;
+  padding: 9px;
   width: 50px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
-  font-size: 22px;
+  font-size: 21px;
   cursor: pointer;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .update {
@@ -55,7 +54,7 @@ button {
 .delete {
   background-color: rgb(248, 75, 75);
   border: none;
-  color: #fff;
+  color: white;
 }
 
 .delete:hover {
@@ -74,6 +73,6 @@ button {
   position: relative;
   top: 30px;
   left: 270px;
-  font-size: 22px;
+  font-size: 21px;
   cursor: pointer;
 }
