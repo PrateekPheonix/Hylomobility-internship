@@ -19,23 +19,23 @@ p {
 }
 .card-head {
   font-weight: bold;
-  margin: 0 3px;
+  margin: 0 4px;
   color: #f85072;
 }
 .card-content {
   flex: 4;
 }
 .card-buttons {
-  margin-left: 16px;
+  margin-left: 15px;
 }
 
 button {
-  margin: 20px 5px;
+  margin: 22px 5px;
   padding: 9px;
   width: 50px;
   border-radius: 12px;
   text-align: center;
-  font-size: 21px;
+  font-size: 22px;
   cursor: pointer;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
@@ -47,11 +47,11 @@ button {
 }
 
 .update:hover {
-  background-color: rgb(52, 255, 34);
+  background-color: rgb(52, 250, 34);
 }
 
 .delete {
-  background-color: rgb(248, 75, 75);
+  background-color: rgb(250, 75, 75);
   border: none;
   color: white;
 }
