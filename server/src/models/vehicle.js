@@ -6,6 +6,9 @@ const vehicleSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    createdBy: {
+        type: String
+    },
     manufacturedYear: {
         type: Number,
         required: true,
@@ -15,9 +18,6 @@ const vehicleSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-    },
-    createdBy: {
-        type: String
     }
 })
 
